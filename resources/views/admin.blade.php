@@ -53,7 +53,7 @@
 			<header class="header">
 				<div class="logo-container pl-3">
 					<a href="../" class="logo">
-						<img src="{{asset('images/logoBlue.png')}}" height="30" alt="Porto Admin" />
+						<img src="{{asset('images/logo.png')}}" height="30" alt="Porto Admin" />
 					</a>
 					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
 						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -64,7 +64,7 @@
 				<div class="header-right">
 			
 					<form action="" class="search nav-form">
-						<div class="input-group">
+						<div class="input-group input-search">
 							<input type="text" class="form-control" name="q" id="q" placeholder="Search...">
 							<span class="input-group-btn">
 								<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>

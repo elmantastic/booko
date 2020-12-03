@@ -70,7 +70,7 @@ a:active {
 
 /* Layout Base - Page Header */
 .page-header {
-	background: #34495e;
+	background: #1c684b;
 	border-bottom: none;
 	border-left: 1px solid #3a3a3a;
 	box-shadow: 1px 3px 0 1px #cccccc;
@@ -81,8 +81,8 @@ a:active {
 
 /* Layout Base - Sidebar Left */
 .sidebar-left {
-	background: #34495e;
-	box-shadow: -5px 0 0 #2f3139 inset;
+	background: #1c684b;
+	box-shadow: -5px 0 0 #2b4239 inset;
 	color: #777777;
 	display: table-cell;
 	position: relative;
@@ -1649,12 +1649,12 @@ html.header-dark .header .input-search .input-group-btn .btn-default {
 		position: absolute;
 		left: 67px;
 		width: 233px;
-		background: #191c21;
+		background: #1b352b;
 	}
 
 	html.sidebar-left-collapsed.scroll .sidebar-left .nav-main > li:hover, html.sidebar-left-collapsed.boxed .sidebar-left .nav-main > li:hover {
 		width: 300px;
-		background: #191c21;
+		background: #1b352b;
 	}
 
 	html.sidebar-left-collapsed.scroll .sidebar-left .nav-main > li:hover > a, html.sidebar-left-collapsed.boxed .sidebar-left .nav-main > li:hover > a {
