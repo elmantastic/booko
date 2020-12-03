@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', ['middleware' => 'isadmin', function () {
-    return view('admin');
+    return view('manage');
 }]);
 
 Route::get('/user', ['middleware' => 'auth', function () {
