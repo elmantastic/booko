@@ -1,7 +1,7 @@
 <div class="">
   <div class="row mb-5">
     <div class="col">
-      <div class="card">
+      <div class="card border-0">
         <div class="card-body">
           <h2 class="font-weight-bold mb-4">Product List</h2>
             <table class="table table-bordered table-hover table-responsive">
@@ -18,6 +18,7 @@
                 <th scope="col">Publisher</th>
                 <th scope="col">Year</th>
                 <th scope="col">Pages</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -25,8 +26,8 @@
               <tr>
                 <td>{{$index+1}}</td>
                 <td>{{$product->title}}</td>
-                <td>{{$product->image}}</td>
-                <td>{{$product->description}}</td>
+                <td class="center"><img src="{{ asset('storage/images/'.$product->image)}}" alt="product-image" class="img-fluid justify-content-center" width="30%"></td>
+                <td class="overflow-auto">{{$product->description}}</td>
                 <td>{{$product->category}}</td>
                 <td>{{$product->stock}}</td>
                 <td>{{$product->price}}</td>
@@ -34,6 +35,12 @@
                 <td>{{$product->publisher}}</td>
                 <td>{{$product->year}}</td>
                 <td>{{$product->pages}}</td>
+                <td>
+                  <div class="form-group d-flex">
+                    <button class="border-0 btn-primary rounded-left  p-3"><i class="fa fa-edit" ></i></button>
+                    <button class="border-0 btn-secondary rounded-right p-3"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </td>
               </tr>
             @endforeach
             </tbody>
@@ -44,10 +51,10 @@
   </div>
   <div class="row">
     <div class="col">
-      <div class="card">
+      <div class="card border-0">
         <div class="card-body">
           <h2 class="font-weight-bold mb-4">Add Product</h2>
-          <form>
+          <form wire:submit.prevent="addProduct">
           <div class="row">
             <div class="col-4">
               <div class="form-group row-fluid">
@@ -75,7 +82,27 @@
             <div class="col-4">
               <div class="form-group row-fluid">
                 <label for="">Category</label>
-                <input wire:model="category" type="text" class="form-control">
+                <select wire:model="category" class="form-control row-fluid">
+                  <option option value="" selected>Choose Category</option>
+                  <option value="adventure" >Adventure</option>
+                  <option value="action">Action</option>
+                  <option value="biography">Biography</option>
+                  <option value="business">Business</option>
+                  <option value="classic">Classic</option>
+                  <option value="comedy">Comedy</option>
+                  <option value="comic">Comic</option>
+                  <option value="cookbooks">Cookbooks</option>
+                  <option value="crime">Crime</option>
+                  <option value="fantasy">Fantasy</option>
+                  <option value="fiction">Fiction</option>
+                  <option value="history">History</option>
+                  <option value="horror">Horror</option>
+                  <option value="mystery">Mystery</option>
+                  <option value="non_fiction">Non-Fiction</option>
+                  <option value="romance">Romance</option>
+                  <option value="sci-fi">Sci-fi</option>
+                  <option value="thrillers">Thrillers</option>
+                </select>
                 @error('category') <small class="text-danger">{{$message}}</small>@enderror
               </div>
               <div class="form-group row-fluid">
@@ -97,30 +124,30 @@
             <div class="col-4">
               <div class="form-group row-fluid">
                 <label for="">Year</label>
-                <input wire:model="pages" type="text" class="form-control">
-                @error('pages') <small class="text-danger">{{$message}}</small>@enderror
+                <input wire:model="year" type="number" class="form-control">
+                @error('year') <small class="text-danger">{{$message}}</small>@enderror
               </div>
               <div class="form-group row-fluid">
                 <label for="">Pages</label>
-                <input wire:model="pages" type="text" class="form-control">
+                <input wire:model="pages" type="number" class="form-control">
                 @error('pages') <small class="text-danger">{{$message}}</small>@enderror
               </div>
               <div class="form-group row-fluid">
                 <label for="">Stock</label>
-                <input wire:model="stock" type="text" class="form-control">
+                <input wire:model="stock" type="number" class="form-control">
                 @error('stock') <small class="text-danger">{{$message}}</small>@enderror
               </div>
               <div class="form-group row-fluid">
                 <label for="">Price</label>
-                <input wire:model="price" type="text" class="form-control">
+                <input wire:model="price" type="number" class="form-control">
                 @error('price') <small class="text-danger">{{$message}}</small>@enderror
               </div>
             </div>
           </div>
-          <div class="row mt-5">
+          <div class="row form-group mt-5">
             <div class="col-8"></div>
             <div class="col-4 align-self-end">
-              <button class="btn btn-success btn-block btn-lg">Save</button>
+              <button class="btn btn-success btn-block btn-lg" type="submit">Save</button>
             </div>
           </div>
           </form>

@@ -121,7 +121,7 @@ blockquote.primary {
 }
 
 .open > .dropdown-toggle.btn-primary {
-	background: #4d9b7d;
+	background: #0981bd;
 	border-color: #0077b3;
 }
 
@@ -132,13 +132,14 @@ body .btn-primary.dropdown-toggle {
 body .btn-primary {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #4d9b7d;
-	border-color: #4d9b7d;
+	background-color: #0981bd;
+	border-color: #0981bd;
 }
 
 body .btn-primary:hover {
 	border-color: #0099e6 !important;
 	background-color: #0099e6;
+	color: #212529;
 }
 
 body .btn-primary:active,
