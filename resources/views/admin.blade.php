@@ -179,6 +179,6 @@
 
 		<!-- Examples -->
 		<script src="{{ asset('assets/javascripts/tables/examples.datatables.editable.js') }}"></script>
-        @livewireStyles
+        @livewireScripts
 	</body>
 </html>

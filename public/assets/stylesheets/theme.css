@@ -4576,32 +4576,32 @@ body .btn-primary[disabled] {
 }
 
 body .btn-success {
-	border-color: #47a447;
-	background-color: #47a447;
-	border-color: #47a447 #47a447 #388038;
+	border-color: #1c684b;
+	background-color: #1c684b;
+	border-color: #1c684b #1c684b #1c684b;
 	color: white;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
 body .btn-success:hover {
-	border-color: #51b451;
-	background-color: #51b451;
+	border-color: #298562;
+	background-color:  #298562;
 	color: white;
 }
 
 body .btn-success:active, body .btn-success:focus {
-	border-color: #3f923f;
-	background-color: #3f923f;
+	border-color: #206d50;
+	background-color: #206d50;
 	color: white;
 }
 
 body .btn-success.dropdown-toggle {
-	border-left-color: #3f923f;
+	border-left-color: #206d50;
 }
 
 body .btn-success[disabled] {
-	border-color: #86cb86;
-	background-color: #86cb86;
+	border-color: #578372;
+	background-color: #578372;
 }
 
 body .btn-warning {

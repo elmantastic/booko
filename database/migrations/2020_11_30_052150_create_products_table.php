@@ -15,15 +15,16 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('title');
             $table->string('image');
-            $table->string('pengarang');
-            $table->string('penerbit');
-            $table->integer('tahun');
-            $table->string('kategori');
-            $table->text('deskripsi');
-            $table->integer('halaman');
-            $table->integer('harga');
+            $table->text('description');
+            $table->string('category');
+            $table->integer('stock');
+            $table->integer('price');
+            $table->string('author');
+            $table->string('publisher');
+            $table->integer('year');
+            $table->integer('pages');
             $table->timestamps();
         });
     }

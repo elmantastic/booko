@@ -85,6 +85,6 @@
             {{isset($slot) ? $slot : null}}
         </main>
     </div>
-    @livewireStyles
+    @livewireScripts
 </body>
 </html>

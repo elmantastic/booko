@@ -19,6 +19,5 @@
             </div>
         </div>
     </div>
-    @livewire('product')
 </div>
 @endsection
