@@ -19,16 +19,31 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <style>
+        .badge{
+            background: #D2312D;
+            color: #FFF;
+            font-size: 10px;
+            font-weight: normal;
+            height: 16px;
+            padding: 3px 5px 3px 5px;
+            position: absolute;
+            right: -8px;
+            top: -3px;
+            }
+    </style>
+
     @livewireStyles
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('images/logo.png')}}" alt="" srcset="" height="30">
                     <!-- {{ asset('app.name', 'Laravel') }} -->
                 </a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -36,11 +51,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                    
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                    <button class="btn">
+                        <i class="fa fa-shopping-basket"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <span class="custom-separator-me" ></span>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
