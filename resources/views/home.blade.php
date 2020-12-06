@@ -27,7 +27,6 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div class="container">
-    @livewire('post.product')
-</div>
+<section class="section-title mt-5"><h2>Our Product</h2></section>
+@livewire('post.product')
 @endsection

@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Post;
 
 use Livewire\Component;
+use App\Models\Product as ProductModel;
 
 class Product extends Component
 {
     public function render()
     {
-        return view('livewire.post.product');
+        $products = ProductModel::orderBy('created_at', 'DESC')->paginate(20);
+        return view('livewire.post.product', compact('products'));
     }
 }
