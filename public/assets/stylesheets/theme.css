@@ -11,10 +11,16 @@ html {
 
 body {
 	color: #777;
-	font-family: "Open Sans", Arial, sans-serif;
+	/* font-family: "Open Sans", Arial, sans-serif; */
+	white-space: normal;
+    line-height: normal;
+	font-weight: normal;
+    font-size: medium;
+	font-style: normal;
+	font-variant: normal;
 	line-height: 22px;
 	margin: 0;
-	font-size: 13px;
+	/* font-size: 13px; */
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -59,7 +65,7 @@ a:active {
 /* Layout Base - Content Body */
 .content-body {
 	display: table-cell;
-	padding: 40px;
+	padding: 25px;
 	position: relative;
 	vertical-align: top;
 }
@@ -2466,7 +2472,7 @@ ul.nav-main li .nav-children .nav-children .nav-children li a {
 	letter-spacing: normal;
 	line-height: 50px;
 	margin: 0 0 0 -1px;
-	padding: 0 22px 0 20px;
+	padding: 0 22px 0 40px;
 }
 
 .page-header .right-wrapper {

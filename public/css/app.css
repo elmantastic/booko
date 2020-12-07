@@ -9941,8 +9941,7 @@ a.badge:focus {
 
 .btn .badge {
   position: relative;
-  top: -15px;
-  right: 8px;
+  top: -1px;
 }
 
 .badge-pill {
@@ -15510,17 +15509,5 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-
-  .custom-sperator-me{
-    background-color: #f6f6f6;
-    background-image: -webkit-linear-gradient(#f6f6f6 60%, #ededed);
-    background-image: linear-gradient(#f6f6f6 60%, #ededed);
-    display: inline-block;
-    height: 100%;
-    margin: 0 25px 0;
-    width: 20px;
-    vertical-align: middle;
-  }
-
 }
 
