@@ -6,12 +6,8 @@
             <div class="img-container">
                 <img 
                 class="product-img" 
-                src="{{ asset('storage/images/'.$product->image)}}"
+                src="{{ asset('assets/images/products')}}/{{$product->image}}"
                 alt="product">
-                <button class="bag-btn" data-id={{$product->id}}>
-                    <i class="fas fa-shopping-cart"></i>
-                    add to bag
-                </button>
                 </div>
             <h4 class="p-2">{{$product->title}}</h4>
             <h5>Rp {{number_format($product->price , 0, ',', '.')}}</h5>
@@ -20,3 +16,6 @@
     </div>
     @endforeach
 </div>
+
+
+{{-- asset('storage/images/'.$product->image)--}}

@@ -1,0 +1,138 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.badge{
+    background: #D2312D;
+    color: #FFF;
+    font-size: 10px;
+    font-weight: normal;
+    height: 16px;
+    padding: 3px 5px 3px 5px;
+    position: absolute;
+    right: -8px;
+    top: -3px;
+    }
+
+.badge-booko{
+    position: absolute;
+    right: -6px;
+    top: -10px;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    font-size : 12px;
+    font-weight : 700;
+    border : 1px solid white;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+    color: white;
+    background: #1c684b;
+}
+
+.cart-booko{
+    width : 40px;
+    color : #1c684b;
+    font-size : 16px;
+    font-weight : normal;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    vertical-align: middle;
+}
+.cart-booko-btn {
+    cursor : pointer;
+    position: relative;
+}
+.separator-booko{
+    margin: auto 10px;
+    width: 2px;
+    height: 50px;
+    background : #f6f6f6;
+    position: relative;
+}
+
+.section-title{
+    font-size : 24px;
+    font-weight : 700;
+    color : #1c684b;
+}
+.products {
+    padding: 4rem 0;
+}
+.section-title h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+}
+.products-center {
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 1170px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2rem;
+}
+
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+.bag-btn {
+    position: absolute;
+    top: 70%;
+    right: 0;
+    background: #1c684b;
+    border: none;
+    text-transform: uppercase;
+    padding: 0.5rem 0.75rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    transition: all 0.3s linear;
+    transform: translateX(101%);
+    cursor: pointer;
+}
+.bag-btn:hover {
+    color: white;
+}
+.fa-shopping-cart {
+    margin-right: 0.5rem;
+}
+.img-container:hover .bag-btn {
+    transform: translateX(0);
+}
+.product-img {
+    display: block;
+    width: 100%;
+    min-height: 15rem;
+    max-height: 18rem;
+    transition: all 0.3s linear;
+}
+.img-container:hover .product-img {
+    opacity: 0.5;
+}
+
+.product h4 {
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    margin-top: 0.3rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+}
+
+.product h5 {
+    margin-top: 0.5rem;
+    letter-spacing: 0.1rem;
+    color: #1c684b;
+    text-align: center;
+    font-weight: 600;
+}
+
+.product   a {
+    text-decoration: none;
+    color: #1c684b;
+}
