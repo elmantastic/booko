@@ -1,4 +1,4 @@
-<footer class="pt-5">
+<footer class="pt-5" height="200px">
     <hr>
     <div class="container">
         <div class="row ">

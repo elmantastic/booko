@@ -1,4 +1,4 @@
-<div>
+<div class="sticky-top">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -13,19 +13,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item ml-3">
                         <a class="nav-link" href="{{ url('/')}}">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
+                    </li> -->
+                    <li class="nav-item dropdown ml-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Category
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <ul class="list-unstyled col-md-4">
-                        @foreach($categories as $category)
+                    <div class="dropdown-menu dropdown-multicol2" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-col">
+                        @foreach($categories as $index=>$category)
                             <a class="dropdown-item" href="#">{{$category->name}}</a>
+                            @if(((int)$index+1)%5 == 0)
+                                </div>
+                                <div class="dropdown-col">
+                            @endif
                         @endforeach
-                        </ul>
+                        </div>
                     </div>
                     </li>
                     <li>

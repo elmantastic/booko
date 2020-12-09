@@ -31,7 +31,7 @@
     <section class="section-title mt-5">
     <h3>Popular Categories</h3>
     </section>
-    <section class="popular-category mt-4">
+    <section class="popular-category mt-4 mb-5">
         <div class="container row m-auto">
             @foreach($popular_categories as $category)
             <div class="col">
@@ -48,6 +48,28 @@
     </section>
 
 
-    <section class="section-title mt-5"><h3>Our Product</h3></section>
-    @livewire('post.product')
+    <!-- <section class="section-title mt-5"><h3>Best Seller</h3></section> -->
+    <div class="section-post d-flex justify-content-between section-title">
+        <h3>Best Seller</h3>
+        <h6><a href="">Show all products</a></h6>
+    </div>
+    <div class="products-center">
+        @foreach($products as $product)
+        <div class="card border-0 product-custom">
+            <article class="product">
+                <a href="#">
+                <div class="img-container">
+                    <img 
+                    class="product-img" 
+                    src="{{ asset('assets/images/products')}}/{{$product->image}}"
+                    alt="product">
+                    </div>
+                <h4 class="pt-2 pl-2">{{$product->title}}</h4>
+                <p class="pl-2">{{$product->author}}</p>
+                <h5 class="p-2">Rp {{number_format($product->price , 0, ',', '.')}}</h5>
+                </a>
+            </article>
+        </div>
+        @endforeach
+    </div>
 </div>

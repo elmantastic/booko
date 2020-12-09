@@ -10,11 +10,6 @@ class Home extends Component
 {
     public function render()
     {
-
-        // $popular_categories = ProductModel::join('categories', 'category_id', 'id')
-        //     ->select('categories.id', 'categories.name', 'count(category_id) as ccount')
-        //     ->groupBy('products.category_id')
-        //     ->orderBy('ccount DESC LIMIT 4');
         
         $popular_categories = DB::table('products')
         ->Join('categories','categories.id','=','products.category_id')
@@ -24,7 +19,7 @@ class Home extends Component
         ->limit(4)
         ->get();
 
-        $products = ProductModel::orderBy('created_at', 'DESC')->paginate(20);
+        $products = ProductModel::orderBy('created_at', 'DESC')->take(10)->get();
 
 
         return view('livewire.home', compact('popular_categories', 'products'));

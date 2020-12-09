@@ -31,9 +31,9 @@
             @yield('content')
             {{isset($slot) ? $slot : null}}
 
-            @include('layouts.footer')
         </main>
     </div>
+    @include('layouts.footer')
     @livewireScripts
 </body>
 </html>

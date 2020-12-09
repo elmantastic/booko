@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\Post\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Livewire\Home;
 // });
 
 Route::get('/', Home::class);
+Route::get('/products', Product::class);
 
 Route::get('/admin', ['middleware' => 'isadmin', function () {
     return view('manage');

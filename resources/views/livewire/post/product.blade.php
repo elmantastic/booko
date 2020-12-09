@@ -1,10 +1,10 @@
-<div>
-    <div class="container d-flex justify-content-between align-items-center mb-5">
+<div class="mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-5 section-post">
         <div class="section-title">
             <h4>List product</h4>
         </div>
         <div>
-            <div class="input-group ml-3 mr-5 ">
+            <div class="input-group">
             <input wire:model="search" type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
