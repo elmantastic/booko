@@ -169,10 +169,20 @@ body{
 }
 
 .section-post a{
-    color:#d6340c;;
+    color:#d6340c;
     font-weight: 600;
 }
 
 .section-post a:hover{
     color:#1c684b;
+}
+
+.breadcrumb{
+    background-color: transparent;
+    padding: 0;
+}
+
+.breadcrumb .active{
+    font-weight: 600;
+    color: #d6340c;
 }

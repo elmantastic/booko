@@ -51,7 +51,7 @@
     <!-- <section class="section-title mt-5"><h3>Best Seller</h3></section> -->
     <div class="section-post d-flex justify-content-between section-title">
         <h3>Best Seller</h3>
-        <h6><a href="">Show all products</a></h6>
+        <h6><a href="{{ url('/products')}}">Show all products</a></h6>
     </div>
     <div class="products-center">
         @foreach($products as $product)
