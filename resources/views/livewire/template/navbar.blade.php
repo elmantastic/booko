@@ -16,8 +16,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/')}}">Home</a>
                     </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="list-unstyled col-md-4">
+                        @foreach($categories as $category)
+                            <a class="dropdown-item" href="#">{{$category->name}}</a>
+                        @endforeach
+                        </ul>
+                    </div>
+                    </li>
+                    <li>
+                    
+                    </li>
                 </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                 @livewire('cart.cart-dialog')

@@ -34,10 +34,11 @@
     <section class="popular-category mt-4">
         <div class="container row m-auto">
             @foreach($popular_categories as $category)
-            <div class="col ">
+            <div class="col">
                 <div class="card border-0">
                     <div class="card-body text-center shadow">
-                        {{$category->name}}
+                        <h5>{{$category->name}}</h5>
+                        <p class="m-0">{{$category->cc}} books</p>
                     </div>
                 </div>
             </div>
@@ -48,6 +49,5 @@
 
 
     <section class="section-title mt-5"><h3>Our Product</h3></section>
-
     @livewire('post.product')
 </div>

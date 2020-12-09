@@ -30,6 +30,8 @@
         <main>
             @yield('content')
             {{isset($slot) ? $slot : null}}
+
+            @include('layouts.footer')
         </main>
     </div>
     @livewireScripts

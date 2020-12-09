@@ -1,5 +1,6 @@
 body{
     font-family: 'Montserrat', sans-serif;
+    background-color: white;
 }
 
 .badge{
@@ -73,7 +74,7 @@ body{
     margin: 0 auto;
     max-width: 1170px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     grid-column-gap: 1.5rem;
     grid-row-gap: 2rem;
 }
@@ -121,18 +122,31 @@ body{
     font-size: 1.1rem;
     margin-top: 0.3rem;
     letter-spacing: 0.1rem;
-    text-align: center;
+    text-align: left;
+    font-weight: 600;
+}
+
+.product p{
+    margin-top: 0.5rem;
+    letter-spacing: 0.1rem;
+    color: #afafaf;
+    text-align: left;
+    font-weight: 500;
 }
 
 .product h5 {
     margin-top: 0.5rem;
     letter-spacing: 0.1rem;
-    color: #1c684b;
-    text-align: center;
+    color: #d6340c;
+    text-align: left;
     font-weight: 600;
 }
 
 .product   a {
     text-decoration: none;
     color: #1c684b;
+}
+
+.product-custom{
+    box-shadow: rgba(49, 53, 59, 0.12) 0px 1px 6px 0px;
 }
