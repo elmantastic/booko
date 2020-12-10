@@ -19,18 +19,18 @@
         </div>
         <div class="col-md-6">
             @if($product->stock > 10)
-                <span class="badge badge-secondary badge-stock">Ready Stock</span>
+                <span class="badge badge-secondary badge-stock"><i class="fas fa-check"></i> Ready Stock</span>
             @elseif($product->stock > 0)
-                <span class="badge badge-secondary badge-stock-limit">Run Out Soon</span>
+                <span class="badge badge-secondary badge-stock-limit"><i class="fas fa-stopwatch"></i> Run Out Soon</span>
             @else
-                <span class="badge badge-secondary badge-stock-out">Out Of Stock</span>
+                <span class="badge badge-secondary badge-stock-out"><i class="fas fa-times"></i> Out Of Stock</span>
             @endif
             <h3 class="font-weight-bold text-booko-primary">{{$product->title}}</h3>
             <h6 class="font-weight-normal">{{$product->author}}</h6>
             <hr>
             <div class="row">
                 <div class="col-3">
-                    <h6 class="font-weight-bold text-secondary">Harga</h6>
+                    <h6 class="font-weight-bold text-secondary">Price</h6>
                 </div>
                 <div class="col-md-auto">
                     <h3 class="font-weight-bold text-booko-secondary">Rp {{$product->price}}</h3>
@@ -48,12 +48,63 @@
             <hr>
             <div class="row">
                 <div class="col-3">
-                    <h6 class="font-weight-bold text-secondary">Jumlah</h6>
+                    <h6 class="font-weight-bold text-secondary">Qty</h6>
                 </div>
-                <div class="col-md-auto">
-                    <h3 class="font-weight-bold text-booko-secondary">Rp {{$product->price}}</h3>
+                <div class="col-md-auto d-flex justify-content-around align-self-center">
+                    @if($qty == 1)
+                    <button wire:click="decrementQty" class="btn-qty-booko btn-qty-limit bg-secondary disabled ml-0">
+                    @else
+                    <button wire:click="decrementQty" class="btn-qty-booko btn-success ml-0">
+                    @endif
+                    <i class="fas fa-minus"></i> </button>
+                    <h4 class="pt-1">{{$qty}}</h4>
+                    @if($qty < $product->stock)
+                    <button wire:click="incrementQty" class="btn-qty-booko btn-success">
+                    @else
+                    <button wire:click="incrementQty" class="btn-qty-booko btn-qty-limit disabled bg-secondary">
+                    @endif
+                    <i class="fas fa-plus"></i> </button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row mt-5 pl-3">
+        <ul class="nav nav-tabs w-100 justify-items-center" id="myTab" role="tablist">
+            <li class="nav-item col-sm-3 pr-0" role="presentation">
+                <a class="nav-link active text-center" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
+            </li>
+            <li class="nav-item col-sm-3 pl-0" role="presentation">
+                <a class="nav-link text-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Detail</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row mt-3 pl-3">
+        <div class="container">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{{$product->description}}</div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row">
+                    <div class="col-2">Category</div>
+                    <div class="col">: {{$product->category->name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Author</div>
+                    <div class="col">: {{$product->author}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Publisher</div>
+                    <div class="col">: {{$product->publisher}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Year</div>
+                    <div class="col">: {{$product->year}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Pages</div>
+                    <div class="col">: {{$product->pages}}</div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>

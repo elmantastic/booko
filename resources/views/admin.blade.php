@@ -53,7 +53,7 @@
 			<header class="header">
 				<div class="logo-container pl-3">
 					<a href="../" class="logo">
-						<img src="{{asset('images/logo.png')}}" height="30" alt="Porto Admin" />
+						<img src="{{ asset('assets/images/Logo/logo.png')}}" height="30" alt="Admin" />
 					</a>
 					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
 						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>

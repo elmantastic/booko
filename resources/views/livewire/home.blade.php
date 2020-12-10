@@ -34,7 +34,7 @@
     <section class="mt-4 mb-5">
         <div class="container row m-auto">
             @foreach($popular_categories as $category)
-            <div class="col">
+            <div class="col category-links">
                 <a href="{{ url('/products/category', $category->id)}}" >
                     <div class="card border-0 popular-category">
                         <div class="card-body text-center shadow">
@@ -68,11 +68,11 @@
                 <p class="pl-2">{{$product->author}}</p>
                 <h5 class="p-2">Rp {{number_format($product->price , 0, ',', '.')}}</h5>
                 @if($product->stock > 10)
-                    <span class="badge badge-secondary badge-stock ml-2">Ready Stock</span>
+                    <span class="badge badge-secondary badge-stock ml-2"><i class="fas fa-check"></i> Ready Stock</span>
                 @elseif($product->stock > 0)
-                    <span class="badge badge-secondary badge-stock-limit ml-2">Run Out Soon</span>
+                    <span class="badge badge-secondary badge-stock-limit ml-2"><i class="fas fa-stopwatch"></i> Run Out Soon</span>
                 @else
-                    <span class="badge badge-secondary badge-stock-out ml-2">Out Of Stock</span>
+                    <span class="badge badge-secondary badge-stock-out ml-2"><i class="fas fa-times"></i> Out Of Stock</span>
                 @endif
                 </a>
             </article>

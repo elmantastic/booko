@@ -225,6 +225,15 @@ body{
     color: white;
 }
 
+.popular-category:hover{
+    color: white;
+    filter: grayscale(60%);
+}
+
+.category-links a:hover{
+    text-decoration: none;
+}
+
 .text-booko-primary{
     color: #1c684b;
 }
@@ -248,5 +257,28 @@ body{
     position: relative;
     right: 0;
     background: #f0b70c;
+}
+
+.btn-qty-booko{
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    margin: 0 20px;
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-qty-booko:active{
+    text-decoration: none;
+    border: none;
+}
+.btn-qty-booko:visited{
+    text-decoration: none;
+    border: none;
+}
+
+.btn-qty-limit{
+    cursor: not-allowed;
 }
 
