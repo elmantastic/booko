@@ -31,22 +31,22 @@
     <section class="section-title mt-5">
     <h3>Popular Categories</h3>
     </section>
-    <section class="popular-category mt-4 mb-5">
+    <section class="mt-4 mb-5">
         <div class="container row m-auto">
             @foreach($popular_categories as $category)
             <div class="col">
-                <div class="card border-0">
-                    <div class="card-body text-center shadow">
-                        <h5>{{$category->name}}</h5>
-                        <p class="m-0">{{$category->cc}} books</p>
+                <a href="{{ url('/products/category', $category->id)}}" >
+                    <div class="card border-0 popular-category">
+                        <div class="card-body text-center shadow">
+                            <h5>{{$category->name}}</h5>
+                            <p class="m-0">{{$category->cc}} books</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             @endforeach
-
         </div>
     </section>
-
 
     <!-- <section class="section-title mt-5"><h3>Best Seller</h3></section> -->
     <div class="section-post d-flex justify-content-between section-title">
@@ -57,7 +57,7 @@
         @foreach($products as $product)
         <div class="card border-0 product-custom">
             <article class="product">
-                <a href="#">
+                <a href="{{ url('products', $product->id)}}">
                 <div class="img-container">
                     <img 
                     class="product-img" 
@@ -67,6 +67,13 @@
                 <h4 class="pt-2 pl-2">{{$product->title}}</h4>
                 <p class="pl-2">{{$product->author}}</p>
                 <h5 class="p-2">Rp {{number_format($product->price , 0, ',', '.')}}</h5>
+                @if($product->stock > 10)
+                    <span class="badge badge-secondary badge-stock ml-2">Ready Stock</span>
+                @elseif($product->stock > 0)
+                    <span class="badge badge-secondary badge-stock-limit ml-2">Run Out Soon</span>
+                @else
+                    <span class="badge badge-secondary badge-stock-out ml-2">Out Of Stock</span>
+                @endif
                 </a>
             </article>
         </div>

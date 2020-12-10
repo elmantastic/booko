@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Post\Product;
+use App\Http\Livewire\Post\ProductDetail;
+use App\Http\Livewire\Post\ProductCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,8 @@ use App\Http\Livewire\Post\Product;
 
 Route::get('/', Home::class);
 Route::get('/products', Product::class);
+Route::get('/products/{id}', ProductDetail::class);
+Route::get('/products/category/{categoryId}', ProductCategory::class);
 
 Route::get('/admin', ['middleware' => 'isadmin', function () {
     return view('manage');

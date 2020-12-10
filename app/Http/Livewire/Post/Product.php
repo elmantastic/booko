@@ -27,6 +27,8 @@ class Product extends Component
         } else{
             $products = ProductModel::orderBy('created_at', 'DESC')->paginate(10);
         }
-        return view('livewire.post.product', compact('products'));
+        $title = 'Books List';
+
+        return view('livewire.post.product', compact('products', 'title'));
     }
 }

@@ -58,6 +58,7 @@ body{
     font-size : 24px;
     font-weight : 700;
     color : #1c684b;
+    text-transform: capitalize;
 }
 .products {
     padding: 4rem 0;
@@ -152,6 +153,12 @@ body{
     box-shadow: rgba(49, 53, 59, 0.12) 0px 1px 6px 0px;
 }
 
+.product-image-booko{
+    max-width: 100%;
+    height: auto;
+    max-height: 545px;
+}
+
 .dropdown-multicol2{
     min-width: 35em;
     max-width: 50em;
@@ -186,3 +193,60 @@ body{
     font-weight: 600;
     color: #d6340c;
 }
+
+.carousel-control-prev:hover {
+    background-image: linear-gradient(to right, #1c684b, transparent);
+}
+.carousel-control-next:hover {
+    background-image: linear-gradient(to left, #1c684b, transparent);
+}
+
+.bg-transparent-booko{
+    background: transparent;
+}
+
+.btn-search-booko{
+    z-index: 5;
+    position: relative;
+    left: -38px;
+}
+
+.input-group-booko{
+    width: 350px;
+    right: -38px;
+    
+}
+
+.input-search-booko{
+    border-radius: 40px !important;
+}
+
+.popular-category{
+    color: white;
+}
+
+.text-booko-primary{
+    color: #1c684b;
+}
+
+.text-booko-secondary{
+    color: #d6340c;
+}
+
+.badge-stock{
+    position: relative;
+    right: 0;
+    background: #28a745;
+}
+.badge-stock-out{
+    position: relative;
+    right: 0;
+    background: #6c757d;
+}
+
+.badge-stock-limit{
+    position: relative;
+    right: 0;
+    background: #f0b70c;
+}
+
