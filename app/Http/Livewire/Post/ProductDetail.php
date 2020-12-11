@@ -54,7 +54,8 @@ class ProductDetail extends Component
                 'qty_products' => $this->qty,
                 'unique_code' => mt_rand(100,999),
             ]);
-            $order->update();
+            $order = OrderModel::where('user_id', Auth::user()->id)->where('status', 0)->first();
+            
         } else {
             $order->price_total += $subTotalPrice;
             $order->qty_products += $this->qty;
@@ -62,12 +63,21 @@ class ProductDetail extends Component
         }
 
         // add to order detail
-        DetailModel::create([
-            'qty' => $this->qty,
-            'subtotal_price' => $subTotalPrice,
-            'product_id' => $this->product->id,
-            'order_id' => $order->id,
-        ]);
+        $getRecentAddedProduct =  DetailModel::where('product_id', $this->product->id)->where('order_id', $order->id)->first();
+
+        if($getRecentAddedProduct){
+            $getRecentAddedProduct->qty += $this->qty;
+            $getRecentAddedProduct->subtotal_price += $subTotalPrice;
+            $getRecentAddedProduct->update();
+
+        } else{
+            DetailModel::create([
+                'qty' => $this->qty,
+                'subtotal_price' => $subTotalPrice,
+                'product_id' => $this->product->id,
+                'order_id' => $order->id,
+            ]);     
+        }
 
         $this->emit('addedToCart');
 
