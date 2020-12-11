@@ -1,6 +1,8 @@
 <div class="cart-booko">
     <div class="cart-booko-btn">
         <i class="fas fa-shopping-cart"></i>
-        <span class="badge-booko">3</span>
+        @if($countCart != 0)
+        <span class="badge-booko">{{$countCart}}</span>
+        @endif
     </div>
 </div>

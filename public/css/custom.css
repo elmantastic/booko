@@ -267,18 +267,23 @@ body{
     margin: 0 20px;
     background-color: #28a745;
     color: white;
+    outline: none;
 }
+
 
 .btn-qty-booko:active{
     text-decoration: none;
     border: none;
+    outline: none;
 }
-.btn-qty-booko:visited{
+.btn-qty-booko:focus{
     text-decoration: none;
     border: none;
+    outline: none;
 }
 
 .btn-qty-limit{
     cursor: not-allowed;
+    outline: none;
 }
 
