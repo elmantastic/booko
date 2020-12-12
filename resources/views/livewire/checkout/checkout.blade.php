@@ -18,27 +18,25 @@
             <div class="row d-flex justify-content-between align-items-center pl-3 mb-3">
                 <h4 class="text-booko-primary">Alamat Pengiriman</h4>
             </div>
-            <input class="checkbox-tools" type="radio" name="tools" id="tool-1" checked>
-            <label class="for-checkbox-tools" for="tool-1">
-                <i class='uil uil-line-alt'></i>
-                <h5 class="font-weight-bold">Another House</h5>
-                <p>Sukosari, RT 01, RW 07, Kelurahan Kebonsari, Temanggung
-Temanggung, Kab. Temanggung, 56223</p>
-            </label><!--
-            --><input class="checkbox-tools" type="radio" name="tools" id="tool-2">
-            <label class="for-checkbox-tools" for="tool-2">
-                <i class='uil uil-vector-square'></i>
-                <h5 class="font-weight-bold">Lukman Haryanto</h5>
-                <p>Kebonsari, RT 01, RW 07, Kelurahan Kebonsari, Temanggung
-Temanggung, Kab. Temanggung, 56223</p>
-            </label><!--
-            --><input class="checkbox-tools" type="radio" name="tools" id="tool-3">
-            <label class="for-checkbox-tools" for="tool-3">
-                <i class='uil uil-ruler'></i>
-                <h5 class="font-weight-bold">Elmantastic</h5>
-                <p>Kebonsari, RT 01, RW 07, Kelurahan Kebonsari, Bandung
-Bandung, Kab. Bandung, zdsa</p>
-            </label>
+            @if($countAddress == 0)
+                <div class="mt-5 text-center">
+                    <h2 class="text-booko-primary font-weight-bold mb-3">Your Address List Is Empty</h2>
+                    <h6>You haven't add any address yet</h6>
+                </div>
+            @else
+                @foreach($addressList as $index => $address)
+                @if($address->set_default == true)
+                <input wire:click="setDefaultAddress({{$address->id}})" class="checkbox-tools" type="radio" name="address" id="address{{$index+1}}" checked>
+                @else
+                <input wire:click="setDefaultAddress({{$address->id}})" class="checkbox-tools" type="radio" name="address" id="address{{$index+1}}">
+                @endif
+                <label class="for-checkbox-tools" for="address{{$index+1}}">
+                    <i class='uil uil-line-alt'></i>
+                    <h5 class="font-weight-bold">{{$address->name}}</h5>
+                    <p>{{$address->address_detail}},{{$address->city}}, {{$address->province}}, {{$address->postal_code}}</p>
+                </label>
+                @endforeach
+            @endif
             <hr>
             <button class="btn btn-block border text-secondary">Add Address</button>
         </div>
