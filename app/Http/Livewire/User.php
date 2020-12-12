@@ -10,6 +10,11 @@ class User extends Component
 {
     public $currentUser;
 
+    public $province,
+    $city,
+    $postal_code,
+    $detail;
+
     public function render()
     {
         $this->currentUser = UserModel::where('id', Auth::user()->id)->first();

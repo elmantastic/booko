@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\User;
+use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Livewire\Post\Product;
 use App\Http\Livewire\Post\ProductDetail;
 use App\Http\Livewire\Post\ProductCategory;
@@ -39,14 +40,17 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/checkout/finish', CheckoutFinish::class);
     Route::get('/user', User::class);
 });
+Route::group(['middleware' => 'isadmin'], function(){
+    Route::get('/admin', Dashboard::class);
+});
 
-Route::get('/admin', ['middleware' => 'isadmin', function () {
-    return view('manage');
-}]);
 
 
 Auth::routes();
 
+// Route::get('/admin', ['middleware' => 'isadmin', function () {
+//     return view('manage');
+// }]);
 // Route::get('/user', ['middleware' => 'auth', function () {
 //     return view('user');
 // }]);
