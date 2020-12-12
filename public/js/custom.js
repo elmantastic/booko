@@ -28,7 +28,6 @@ function generate() {
     // document.getElementsByClassName("popular-category").style.background = gradient;
     // document.getElementById("output").innerHTML = gradient;
     
-    console.log(gradients);
 
 }
 

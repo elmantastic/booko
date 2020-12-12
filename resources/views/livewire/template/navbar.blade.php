@@ -49,20 +49,20 @@
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
-                            <li class="nav-item">
+                            <li class="nav-item align-self-center">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
                         
                         @if (Route::has('register'))
-                            <li class="nav-item">
+                            <li class="nav-item align-self-center">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item dropdown form-inline">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <img height="40" src="{{ asset('images/elmantastic.jpg') }}" alt="Admin name" />
+                            <img height="40" src="{{ asset('/images')}}/{{$currentUser->avatar}}" alt="Admin name" />
                                 {{ Auth::user()->name }}
                             </a>
 

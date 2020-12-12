@@ -1,8 +1,8 @@
 <div class="cart-booko">
-    <div class="cart-booko-btn">
+    <a class="cart-booko-btn text-booko-primary" href="{{ url('/cart')}}">
         <i class="fas fa-shopping-cart"></i>
         @if($countCart != 0)
         <span class="badge-booko">{{$countCart}}</span>
         @endif
-    </div>
+    </a>
 </div>

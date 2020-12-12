@@ -21,6 +21,8 @@ class CartDialog extends Component
         
             if($order){
                 $this->countCart = DetailModel::where('order_id', $order->id)->count();
+            } else {
+                $this->countCart = 0;
             }
         }
     }
