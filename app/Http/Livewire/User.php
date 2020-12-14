@@ -6,6 +6,9 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User as UserModel;
 use App\Models\UserAddress as AddressModel;
+use App\Models\Transactions as TransactionModel;
+use App\Models\Order as OrderModel;
+use App\Models\OrderDetail as DetailModel;
 use Illuminate\Support\Facades\DB;
 
 class User extends Component
@@ -15,6 +18,9 @@ class User extends Component
     public $addressList = [];
     public $countAddress;
 
+    public $noHP;
+
+    // address
     public $defaultAddress;
 
     public $name,
@@ -22,6 +28,50 @@ class User extends Component
     $city,
     $postal_code,
     $detail;
+
+    // list transaction
+    public $transactionList = [];
+    public $countTransaction;
+    public $detailTransaction = [];
+    public $details= [];
+
+    public function mount(){
+        $this->countTransaction= DB::table('user_addresses')->where('user_id', Auth::user()->id)->count();
+        $this->transactionList= TransactionModel::where('user_id', Auth::user()->id)->get();
+
+        foreach($this->transactionList as $list){
+            $this->detailTransaction[$list->order->id] = DetailModel::where('order_id', $list->order->id)->get();
+        }
+
+        // dd($this->detailTransaction);
+
+        // foreach($this->detailTransaction as $detail){
+        //     dd($detail);
+        // }
+
+
+        // @foreach($details as $key => $detail)
+        //     @if($key == $transaction->order->id)
+        //     <p>assa{{$detail->id}}</p>
+        //     <p>{{$detail->product->price}}</p>
+        //     @endif
+        // @endforeach
+    }
+
+    public function loadDetails($order_id){
+        $this->details[$order_id] = DetailModel::where('order_id', $order_id)->get();
+
+    }
+
+    public function addNoHP(){
+        $this->validate([
+            'noHP' => 'required',
+        ]);
+
+        $this->currentUser->noHP = $this->noHP;
+        $this->currentUser->update();
+
+    }
 
     public function addAddress(){
         $this->validate([
@@ -59,10 +109,10 @@ class User extends Component
     public function setDefaultAddress($id){
         $addresses = DB::table('user_addresses')->where('user_id', Auth::user()->id)->update(array('set_default' => 0));
         
-        $defaultAddress = AddressModel::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        $this->defaultAddress = AddressModel::where('user_id', Auth::user()->id)->where('id', $id)->first();
 
-        $defaultAddress->set_default = true;
-        $defaultAddress->update();
+        $this->defaultAddress->set_default = true;
+        $this->defaultAddress->update();
         
     }
 
@@ -74,6 +124,8 @@ class User extends Component
 
         $this->currentUser = UserModel::where('id', Auth::user()->id)->first();
 
-        return view('livewire.user');
+        return view('livewire.user', compact([
+            'transactionList' => $this->transactionList
+        ]));
     }
 }

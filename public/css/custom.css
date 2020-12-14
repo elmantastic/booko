@@ -389,3 +389,17 @@ body{
 	color: white;
 	box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
 }
+
+.status-booko a {
+    color: #3490dc;
+    border: 2px solid #3490dc !important;
+}
+
+.status-booko-list {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.card-booko-transaction{
+    border-radius: 15px;
+}

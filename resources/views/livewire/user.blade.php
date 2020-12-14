@@ -28,19 +28,33 @@
                     @endif
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-3">Password</div>
-                <div class="col-6">: Sii password</div>
+        </div>
+    </div>
+    @if(empty($currentUser->noHP))
+    <div class="container mt-5">
+        <div class="row text-center justify-content-center">
+            <div class="col-7">
+                <h4>You have to enter you phone number before set the shipping address</h4>
+                <div class="container mt-4">
+                    <form wire:submit.prevent="addNoHP" id="noHP">
+                        <div class="form-group">
+                            <input wire:model="noHP" type="text" class="form-control" placeholder="ex: 088123456789">
+                            @error('noHP') <small class="text-danger">{{$message}}</small>@enderror
+                            <button type="submit" class="btn btn-success btn-block mt-3">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+    @else
     <div class="row mt-5 pl-3">
         <ul class="nav nav-tabs w-100 justify-content-center" id="myTab" role="tablist">
             <li class="nav-item col-sm-3 pr-0" role="presentation">
-                <a class="nav-link active text-center" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Alamat</a>
+                <a class="nav-link active text-center" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Address</a>
             </li>
             <li class="nav-item col-sm-3 pl-0" role="presentation">
-                <a class="nav-link text-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bank Account</a>
+                <a class="nav-link text-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">List Tansaction</a>
             </li>
         </ul>
     </div>
@@ -48,6 +62,8 @@
         <div class="container-fluid">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                <!-- Address List -->
                 <div class="row">
                 <div class="col">
                 @if($countAddress == 0)
@@ -77,7 +93,7 @@
                     <div class="col">
                     <div class="form-group row-fluid">
                         <label for="">Name the address as</label>
-                        <input wire:model="name" type="text" class="form-control" placeholde="Home1">
+                        <input wire:model="name" type="text" class="form-control" placeholder="ex: Home1">
                         @error('name') <small class="text-danger">{{$message}}</small>@enderror
                     </div>
                     <div class="form-group row-fluid">
@@ -107,11 +123,118 @@
                 </div>
                 </form>
                 </div>
+                </div>
+            <!-- End of Address List -->
             </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+            <!-- List Transaction -->
+            <div class="container-fluid d-flex justify-content-center p-1 align-self-center mb-3">
+                <ul class="nav nav-pills p-1" id="pills-tab" role="tablist">
+                <li class="nav-item mr-2 status-booko">
+                    <a class="nav-link active border border-primary" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Waiting for confirmation</a>
+                </li>
+                <li class="nav-item mr-2 status-booko">
+                    <a class="nav-link border border-primary" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Process</a>
+                </li>
+                <li class="nav-item mr-2 status-booko">
+                    <a class="nav-link border border-primary" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Being sent</a>
+                </li>
+                <li class="nav-item mr-2 status-booko">
+                    <a class="nav-link border border-primary" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Delivered</a>
+                </li>
+                <li class="nav-item mr-2 status-booko">
+                    <a class="nav-link border border-primary" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Finished</a>
+                </li>
+                </ul>
             </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                Gotchaaa!! Not yet bruh
+            <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                @if($countTransaction == 0)
+                    <div class="row justify-content-center mt-5">
+                        <h3 class="text-booko-primary">There is no transaction yet</h3>
+                    </div>
+
+                @else
+                    @foreach($transactionList as $transaction)
+                    <div class="card status-booko-list mb-4 shadow card-booko-transaction">
+                        <div class="card-body p-0">
+                            <div class="row pl-3 pr-3">
+                                <div class="col d-flex justify-content-between popular-category">
+                                <p class="m-2">{{$transaction->created_at}}</p>
+                                <p class="m-2">{{$transaction->order->qty_products}}</p>
+                                </div>
+                            </div>
+                            <hr class="m-0 mb-3">
+                            <div class="row pl-3 pr-3">
+                                <div class="col-6">
+                                <h6 class="font-weight-bold">Shipping Address</h6>
+                                <p>{{$transaction->shipping_address}}
+                                </div>
+                                <div class="col-3">
+                                <p>Status</p>
+                                <h6 class="font-weight-bold">Waiting for Confirmation</h6>
+                                </div>
+                                <div class="col-3">
+                                <p>Total Pay</p>
+                                <h5 class="font-weight-bold text-booko-secondary">Rp {{number_format($transaction->order->price_total + $transaction->order->unique_code , 0, ',', '.')}}</h5>
+                                </div>
+                            </div>
+                            <hr class="m-0 mb-3">
+                            <div class="row pl-3 pr-3 mb-3">
+                                <div class="col mt-3">
+                                <div class="container-fluid">
+                                    @foreach($detailTransaction as $key => $list)
+                                        @if($key == $transaction->order->id)
+                                            @foreach($list as $detail)
+                                                <div class="row mb-2">
+                                                    <div class="col-1">
+                                                    <img src="{{ asset('assets/images/products')}}/{{$detail->product->image}}" alt="" height="100" width="70">
+                                                    </div>
+                                                    <div class="col-4">
+                                                    <h6 class="text-booko-primary font-weight-bold">{{$detail->product->title}}</h6>
+                                                    <p class="text-gray">{{$detail->product->author}}</p>
+                                                    </div>
+                                                    <div class="separator-booko">
+                                                    </div>
+                                                    <div class="col-2">
+                                                    <p>Price</p>
+                                                    <h6 class="text-booko-secondary font-weight-bold">Rp {{$detail->product->price}}</h6>
+                                                    </div>
+                                                    <div class="separator-booko">
+                                                    </div>
+                                                    <div class="col-2">
+                                                    <p>Qty</p>
+                                                    <h6 class="text-booko-secondary font-weight-bold">{{$detail->qty}}</h6>
+                                                    </div>
+                                                    <div class="separator-booko">
+                                                    </div>
+                                                    <div class="col-2">
+                                                    <p>Sub Total</p>
+                                                    <h6 class="text-booko-secondary font-weight-bold">{{$detail->subtotal_price}}</h6>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                @endif
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+            </div>
+
+            <!-- End of List Transaction -->
+
             </div>
         </div>
+        </div>
     </div>
+    @endif
 </div>

@@ -27,14 +27,18 @@
             <p>Silahkan transfer pada rekening diatas untuk menyelesaikan pembayaran</p>
             <div class="row">
                 <div class="col-4">
-                    <h6 class="font-weight-bold text-secondary">Total Bayar</h6>
+                    <h6 class="font-weight-bold text-secondary">Total Pay</h6>
                 </div>
                 <div class="col-md-auto">
-                    <h4 class="font-weight-bold text-booko-primary">Rp {{number_format($order->price_total , 0, ',', '.')}}</h4>
+                    <h4 class="font-weight-bold text-booko-primary">Rp {{number_format($totalPay , 0, ',', '.')}}</h4>
                 </div>
             </div>
+
+            <a href="{{url('/user')}}" class="btn btn-block btn-success mt-5 text-white">Check Transaction History</a>
         </div>
-        <div class="col"></div>
+        <div class="col">
+            
+        </div>
     </div>
     <div class="mt-5"></div>
 </div>
