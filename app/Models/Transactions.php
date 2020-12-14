@@ -16,7 +16,7 @@ class Transactions extends Model
     
     use HasFactory;
 
-    public function transactionsStatus(){
+    public function status(){
         return $this->belongsTo(TransactionsStatus::class, 'status_id', 'id');
     }
 
