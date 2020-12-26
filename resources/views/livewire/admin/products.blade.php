@@ -1,14 +1,20 @@
 <div class="container-fluid">
+@include('livewire.admin.product.update')
   <div class="row mb-5">
     <div class="col">
       <div class="card border-0">
         <div class="card-body">
+          @if (session()->has('message'))
+              <div class="alert alert-success">
+                  {{ session('message') }}
+              </div>
+          @endif
         <h2 class="font-weight-bold mb-4">Product List</h2>
         <div class="d-flex justify-content-between align-items-center mb-5">
             <!-- Modal Trigger Button -->
             <button class="btn btn-success " data-toggle="modal" data-target="#exampleModalCenter" >Add Product</button>
                 <!-- Modal -->
-                <div wire:ignore.self class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div wire:ignore class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -119,16 +125,14 @@
                     </div>
                 </div>
                 </div>
-
-
             <div class="input-group input-group-booko">
             <input wire:model="search" type="text" class="input-search-booko form-control " placeholder="Search..." aria-label="Search" aria-describedby="basic-addon1">
             <span class="input-group-text bg-transparent-booko btn-search-booko border-0" id="basic-addon1"><i class="fa fa-search"></i></span>
             </div>
         </div>
           
-            <table class="table table-bordered table-hover table-responsive">
-            <thead>
+            <table class="table table-hover table-responsive">
+            <thead class="thead-dark">
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Title</th>
@@ -160,7 +164,7 @@
                 <td>{{$product->pages}}</td>
                 <td>
                   <div class="form-group d-flex">
-                    <button class="border-0 btn-primary rounded-left p-3"><i class="fa fa-edit" ></i></button>
+                    <button wire:click="edit({{ $product->id }})" data-toggle="modal" data-target="#updateProductModal"  class="border-0 btn-primary rounded-left p-3"><i class="fa fa-edit" ></i></button>
                     <button class="border-0 btn-secondary rounded-right p-3"><i class="fa fa-trash-alt"></i></button>
                   </div>
                 </td>
