@@ -26,7 +26,7 @@
               <tr>
                 <td>{{$index+1}}</td>
                 <td>{{$product->title}}</td>
-                <td class="center"><img src="{{ asset('assets/images/products/'.$product->image)}}" alt="product-image" class="img-fluid justify-content-center" width="30%"></td>
+                <td class="center"><img src="{{ asset('storage/images/products/'.$product->image)}}" alt="product-image" class="img-fluid justify-content-center" width="30%"></td>
                 <td>{{ substr($product->description, 0, 100)}}...</td>
                 <td>{{$product->category->name}}</td>
                 <td>{{$product->stock}}</td>

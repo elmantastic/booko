@@ -16,7 +16,7 @@
     <div class="row mt-4">
         <div class="col">
             <div class="media">
-                <img class="mr-3" src="{{asset('assets/images/Logo/bri.png')}}" alt="Bank BRI" width="60">
+                <img class="mr-3" src="{{asset('storage/images/Logo/bri.png')}}" alt="Bank BRI" width="60">
                 <div class="media-body">
                     <h5 class="mt-0">Bank Rakyat Indonesia</h5>
                     <p class="mb-1">No. Rekening 012345-888-888</p>

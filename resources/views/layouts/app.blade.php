@@ -18,7 +18,6 @@
     ></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
 
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">

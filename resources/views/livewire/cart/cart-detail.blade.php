@@ -34,7 +34,7 @@
                     <div class="col-2 d-flex align-items-center p-0">
                         <img 
                             class="img-fluid image-cart-booko ml-2" 
-                            src="{{ asset('assets/images/products')}}/{{$detail->product->image}}"
+                            src="{{ asset('storage/images/products')}}/{{$detail->product->image}}"
                             alt="product">
                     </div>
                     <div class="col-8 position-relative ml-4">

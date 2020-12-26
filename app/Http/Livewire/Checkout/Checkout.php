@@ -90,8 +90,9 @@ class Checkout extends Component
     public function checkout(){
 
         $this->noHP = $this->currentUser->noHP;
-
-        $this->checkoutAddress = $this->defaultAddress->address_detail .', '. $this->defaultAddress->city .', '. $this->defaultAddress->province .', '. $this->defaultAddress->postal_code .', '. $this->currentUser->noHP;
+        if($this->defaultAddress){
+            $this->checkoutAddress = $this->defaultAddress->address_detail .', '. $this->defaultAddress->city .', '. $this->defaultAddress->province .', '. $this->defaultAddress->postal_code .', '. $this->currentUser->noHP;
+        }
 
         $this->validate([
             'noHP' => 'required',

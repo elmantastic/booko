@@ -23,7 +23,7 @@
             <div class="card-body p-0">
                 <img 
                     class="img-fluid product-image-booko" 
-                    src="{{ asset('assets/images/products')}}/{{$product->image}}"
+                    src="{{ asset('storage/images/products')}}/{{$product->image}}"
                     alt="product">
             </div>
         </div>

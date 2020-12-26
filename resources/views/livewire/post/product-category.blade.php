@@ -34,7 +34,7 @@
                     <div class="img-container">
                         <img 
                         class="product-img" 
-                        src="{{ asset('assets/images/products')}}/{{$product->image}}"
+                        src="{{ asset('storage/images/products')}}/{{$product->image}}"
                         alt="product">
                         </div>
                     <h4 class="pt-2 pl-2">{{$product->title}}</h4>
