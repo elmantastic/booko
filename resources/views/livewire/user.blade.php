@@ -3,7 +3,7 @@
         <div class="col-3">
             <div class="card">
                 <div class="card-body align-self-center">
-                <img class="" src="{{ asset('/images')}}/{{$currentUser->avatar}}" alt="" srcset="" maxheight="100" width="100%">
+                <img class="" src="{{ asset('/storage/images/users')}}/{{$currentUser->avatar}}?{{rand()}}" alt="" srcset="" maxheight="100" width="100%">
                 <h6 class="mt-4 text-center">{{$currentUser->name}}</h6>
                 </div>
             </div>
