@@ -7,6 +7,8 @@ use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use App\Models\User as UserModel;
 use App\Models\UserAddress as AddressModel;
+use App\Models\Transactions as TransactionModel;
+use App\Models\Order as OrderModel;
 use Illuminate\Support\Facades\Storage;
 
 class Users extends Component
@@ -30,6 +32,8 @@ class Users extends Component
     $noHP,
     $avatarUpdate,
     $currentUserId;
+
+    public $deletedUserId;
 
     public function edit($id){
         $currentUser = UserModel::findOrFail($id);
@@ -79,6 +83,23 @@ class Users extends Component
         $this->avatar='';
         $this->avatarUpdate='';
         $this->noHP='';
+    }
+
+    public function remove($id){
+        $currentUser = UserModel::findOrFail($id);
+
+        $this->deletedUserId = $currentUser->id;
+    }
+
+    public function delete(){
+        $userOrder = OrderModel::where('user_id', $this->deletedUserId)->count();
+        if($userOrder == 0){
+            UserModel::where('id', $this->deletedUserId)->delete();
+            session()->flash('message', 'Data Deleted Successfully.');
+        } else {
+            session()->flash('warning', 'Failed to delete the data. The user have an order records');
+        }
+        $this->dispatchBrowserEvent('deleteUserModal');
     }
 
     public function render()

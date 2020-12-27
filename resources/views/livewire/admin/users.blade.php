@@ -1,9 +1,20 @@
 <div class="container-fluid">
 @include('livewire.admin.user.update')
+@include('livewire.admin.user.delete')
   <div class="row mb-5">
     <div class="col">
       <div class="card border-0">
         <div class="card-body">
+          @if (session()->has('message'))
+              <div class="alert alert-success">
+                  {{ session('message') }}
+              </div>
+          @endif
+          @if (session()->has('warning'))
+              <div class="alert alert-danger">
+                  {{ session('warning') }}
+              </div>
+          @endif
         <h2 class="font-weight-bold mb-4">Users List</h2>
         <div class="float-right mb-5">
             <div class="input-group input-group-booko">
@@ -46,7 +57,7 @@
                 <td>
                   <div class="form-group d-flex">
                     <button wire:click="edit({{ $user->id }})" data-toggle="modal" data-target="#updateUserModal" class="border-0 btn-primary rounded-left p-3"><i class="fa fa-edit" ></i></button>
-                    <button class="border-0 btn-secondary rounded-right p-3"><i class="fa fa-trash-alt"></i></button>
+                    <button wire:click="remove({{ $user->id }})" data-toggle="modal" data-target="#deleteUserModal" class="border-0 btn-secondary rounded-right p-3"><i class="fa fa-trash-alt"></i></button>
                   </div>
                 </td>
               </tr>
