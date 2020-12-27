@@ -33,7 +33,7 @@
                     <div class="form-group row justify-content-md-center">
                         <div class="col-6">
                         <label for="" class="mt-2">Image Preview :</label>
-                        <img src="{{ asset('storage/images/products/'.$imageUpdate)}}" class="img-fluid" alt="Preview Image">
+                        <img src="{{ asset('storage/images/products/'.$imageUpdate)}}?{{rand()}}" class="img-fluid" alt="Preview Image">
                         </div>
                     </div>
                     @endif
