@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <!-- List Transaction -->
     <div class="container-fluid d-flex justify-content-center p-1 align-self-center mb-3">
         <ul class="nav nav-pills p-1" id="pills-tab" role="tablist">
@@ -35,7 +40,7 @@
             <div class="card status-booko-list mb-4 shadow card-booko-transaction">
                 <div class="card-body p-0">
                     <div class="row pl-3 pr-3">
-                        <div class="col d-flex justify-content-between popular-category">
+                        <div class="col d-flex justify-content-between bg-dark text-white">
                         <p class="m-2">{{$transaction->created_at}}</p>
                         <p class="m-2">{{$transaction->order->qty_products}} products</p>
                         </div>
@@ -117,7 +122,7 @@
             <div class="card status-booko-list mb-4 shadow card-booko-transaction">
                 <div class="card-body p-0">
                     <div class="row pl-3 pr-3">
-                        <div class="col d-flex justify-content-between popular-category">
+                        <div class="col d-flex justify-content-between bg-dark text-white">
                         <p class="m-2">{{$transaction->created_at}}</p>
                         <p class="m-2">{{$transaction->order->qty_products}} products</p>
                         </div>
@@ -200,7 +205,7 @@
             <div class="card status-booko-list mb-4 shadow card-booko-transaction">
                 <div class="card-body p-0">
                     <div class="row pl-3 pr-3">
-                        <div class="col d-flex justify-content-between popular-category">
+                        <div class="col d-flex justify-content-between bg-dark text-white">
                         <p class="m-2">{{$transaction->created_at}}</p>
                         <p class="m-2">{{$transaction->order->qty_products}} products</p>
                         </div>
@@ -210,7 +215,7 @@
                         <div class="col-6">
                         <h6 class="font-weight-bold">Shipping Address</h6>
                         <p>{{$transaction->shipping_address}}</p>
-                        <p>{{$transaction->resi_code}}</p>
+                        <p>No Resi : {{$transaction->resi_code}}</p>
                         </div>
                         <div class="col-3">
                         <p>Status</p>
@@ -257,6 +262,9 @@
                                         </div>
                                         <hr>
                                     @endforeach
+                                    <div class="float-right">
+                                        <button wire:click="confirmArrived({{$transaction->id}})" class="btn btn-success">Confirm Arrival</button>
+                                    </div>
                                 @endif
                             @endforeach
                             </div>
@@ -284,7 +292,7 @@
             <div class="card status-booko-list mb-4 shadow card-booko-transaction">
                 <div class="card-body p-0">
                     <div class="row pl-3 pr-3">
-                        <div class="col d-flex justify-content-between popular-category">
+                        <div class="col d-flex justify-content-between bg-dark text-white">
                         <p class="m-2">{{$transaction->created_at}}</p>
                         <p class="m-2">{{$transaction->order->qty_products}} products</p>
                         </div>
@@ -294,7 +302,7 @@
                         <div class="col-6">
                         <h6 class="font-weight-bold">Shipping Address</h6>
                         <p>{{$transaction->shipping_address}}</p>
-                        <p>{{$transaction->resi_code}}</p>
+                        <p>No Resi : {{$transaction->resi_code}}</p>
                         </div>
                         <div class="col-3">
                         <p>Status</p>
@@ -341,6 +349,9 @@
                                         </div>
                                         <hr>
                                     @endforeach
+                                    <div class="float-right">
+                                        <button wire:click="confirmArrived({{$transaction->id}})" class="btn btn-success">Confirm Arrival</button>
+                                    </div>
                                 @endif
                             @endforeach
                             </div>
@@ -364,11 +375,11 @@
 
         @else
             @foreach($transactionList as $transaction)
-            @if($transaction->status->id == 4)
+            @if($transaction->status->id == 5)
             <div class="card status-booko-list mb-4 shadow card-booko-transaction">
                 <div class="card-body p-0">
                     <div class="row pl-3 pr-3">
-                        <div class="col d-flex justify-content-between popular-category">
+                        <div class="col d-flex justify-content-between bg-dark text-white">
                         <p class="m-2">{{$transaction->created_at}}</p>
                         <p class="m-2">{{$transaction->order->qty_products}} products</p>
                         </div>

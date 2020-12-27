@@ -47,8 +47,23 @@ class Transactions extends Component
 
     }
 
+    public function confirmArrived($id){
+        $currentTransaction = TransactionModel::where('id', $id)->first();
+        $currentTransaction->status_id = 5;
+        $currentTransaction->update();
+
+        session()->flash('message', 'Order has been completed successfully');
+    }
+
     public function render()
     {
+        $this->countTransaction= DB::table('transactions')->where('user_id', Auth::user()->id)->count();
+        $this->transactionList= TransactionModel::where('user_id', Auth::user()->id)->get();
+
+        foreach($this->transactionList as $list){
+            $this->detailTransaction[$list->order->id] = DetailModel::where('order_id', $list->order->id)->get();
+        }
+
         $this->currentUser = UserModel::where('id', Auth::user()->id)->first();
         return view('livewire.user.transactions');
     }

@@ -37,6 +37,8 @@ class Products extends Component
             $imageUpdate,
             $currentProductId;
 
+    public $deletedProductId;
+
 
     public function previewImage(){
         $this->validate([
@@ -128,6 +130,10 @@ class Products extends Component
         $categoryId = CategoryModel::where('name', $this->category)->first();
         
         if($this->image){
+            $path = base_path().'/public/storage/images/products/';
+            $oldFile = $path.$imageName;
+            unlink($oldFile);
+
             $newTitle = str_replace(' ', '_', $this->title);
             $imageName = $newTitle.'.'.$this->image->extension();
     
@@ -157,6 +163,19 @@ class Products extends Component
         $this->resetInputFields();
 
         $this->dispatchBrowserEvent('updateModal');
+    }
+
+    public function remove($id){
+        $currentProduct = ProductModel::findOrFail($id);
+
+        $this->deletedProductId = $currentProduct->id;
+    }
+
+    public function delete(){
+        ProductModel::where('id', $this->deletedProductId)->delete();
+
+        session()->flash('message', 'Data Deleted Successfully.');
+        $this->dispatchBrowserEvent('deleteModal');
     }
 
     public function resetInputFields(){

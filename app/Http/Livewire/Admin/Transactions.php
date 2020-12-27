@@ -41,21 +41,27 @@ class Transactions extends Component
         $currentTransaction->status_id = 2;
         $currentTransaction->update();
     }
-
+    
     public function confirmDelivery($id){
-
+        
         if($this->resi[$id] != ''){
             $currentTransaction = TransactionModel::where('id', $id)->first();
             $currentTransaction->resi_code = $this->resi[$id];
             $currentTransaction->status_id = 3;
             $currentTransaction->update();
             session()->flash('message', 'No Resi Confirmed');
-
+            
         }else{
             session()->flash('warning', 'Failed! Please fill the resi first');
         }
     }
-
+    
+    public function confirmArrived($id){
+        $currentTransaction = TransactionModel::where('id', $id)->first();
+        $currentTransaction->status_id = 4;
+        $currentTransaction->update();
+    }
+    
     public function render()
     {
         $this->countTransaction= DB::table('transactions')->count();

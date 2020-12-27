@@ -11,7 +11,7 @@
                 </div>
             @endif
             @if (session()->has('message'))
-                <div class="alert alert-danger">
+                <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
             @endif
@@ -288,7 +288,7 @@
                                         <hr>
                                     @endforeach
                                     <div class="float-right">
-                                        <button wire:click="confirmPayment({{$transaction->id}})" class="btn btn-success">Arrived To Destination</button>
+                                        <button wire:click="confirmArrived({{$transaction->id}})" class="btn btn-success">Arrived To Destination</button>
                                     </div>
                                 @endif
                             @endforeach
@@ -397,7 +397,7 @@
 
         @else
             @foreach($transactionList as $transaction)
-            @if($transaction->status->id == 4)
+            @if($transaction->status->id == 5)
             <div class="card status-booko-list mb-4 shadow card-booko-transaction">
                 <div class="card-body p-0">
                     <div class="row pl-3 pr-3">

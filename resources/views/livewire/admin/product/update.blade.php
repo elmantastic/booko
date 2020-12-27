@@ -92,16 +92,18 @@
                         @error('price') <small class="text-danger">{{$message}}</small>@enderror
                         </div>
                     </div>
-                    <button wire:click.prevent="update()" class="btn btn-dark">Update Product</button>
-                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button wire:click.prevent="update" type="button" class="btn btn-primary">Update Product</button>
+                <script type="text/javascript">
+                    window.addEventListener('updateModal', () => {
+                        console.log('sampai sini lo');
+                        $('#updateProductModal').modal('hide');
+                    });
+                </script>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        window.addEventListener('updateModal', () => {
-            console.log('sampai sini lo');
-            $('#updateProductModal').modal('hide');
-        });
-    </script>
 </div>
