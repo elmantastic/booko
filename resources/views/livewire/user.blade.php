@@ -1,10 +1,12 @@
 <div class="section-post mt-5">
+@include('livewire.user.update')
     <div class="row">
         <div class="col-3">
             <div class="card">
                 <div class="card-body align-self-center">
                 <img class="" src="{{ asset('/storage/images/users')}}/{{$currentUser->avatar}}?{{rand()}}" alt="" srcset="" maxheight="100" width="100%">
                 <h6 class="mt-4 text-center">{{$currentUser->name}}</h6>
+                <button wire:click="edit({{ $currentUser->id }})" data-toggle="modal" data-target="#updateUserModal" class="btn btn-secondary btn-block">Edit Profile</button>
                 </div>
             </div>
         </div>

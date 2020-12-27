@@ -3,29 +3,91 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User as UserModel;
 use App\Models\UserAddress as AddressModel;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\DB;
 
 class User extends Component
 {
+    use WithFileUploads;
+
     public $currentUser;
 
     public $addressList = [];
     public $countAddress;
 
-    public $noHP;
-
     // address
     public $defaultAddress;
 
-    public $name,
+    public $nameaddress,
     $province,
     $city,
     $postal_code,
     $detail;
+
+    public  $name,
+    $email,
+    $avatar,
+    $noHP,
+    $avatarUpdate,
+    $currentUserId;
+
+    public function edit($id){
+        $currentUser = UserModel::findOrFail($id);
+        $this->avatarUpdate = $currentUser->avatar;
+        $this->currentUserId = $currentUser->id;
+        $this->name = $currentUser->name;
+        $this->email = $currentUser->email;
+        $this->noHP = $currentUser->noHP;
+    }
+
+    public function update()
+    {
+        $validate = $this->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'noHP'=> 'required'
+        ]);
+
+        $data = UserModel::find($this->currentUserId);
+        $avatarName = $this->avatarUpdate;
+
+        if($this->avatar){
+            $newName = str_replace(' ','_',$this->name);
+            $avatarName = $newName.'.'.$this->avatar->extension();
+
+            Storage::putFileAs(
+                'public/images/users',
+                $this->avatar,
+                $avatarName
+            );
+        }
+        $data->update([
+            'name' => $this->name,
+            'email' => $this->email,
+            'avatar' => $avatarName,
+            'noHP' => $this->noHP
+        ]);
+
+        session()->flash('message', 'Data User Update Successfully.');
+        $this->resetInputFields();
+        
+        $this->emit('updateImageProfile');
+
+        $this->dispatchBrowserEvent('updateModal');
+    }
+
+    public function resetInputFields(){
+        $this->name='';
+        $this->email='';
+        $this->avatar='';
+        $this->avatarUpdate='';
+        $this->noHP='';
+    }
 
     public function addNoHP(){
         $this->validate([
@@ -43,6 +105,7 @@ class User extends Component
             'city' => 'required',
             'postal_code' => 'required',
             'detail' => 'required',
+            'nameaddress' => 'required',
 
         ]);
 
@@ -53,7 +116,7 @@ class User extends Component
         }
         AddressModel::create([
             'user_id' => $this->currentUser->id,
-            'name' => $this->name,
+            'name' => $this->nameaddress,
             'province' => $this->province,
             'city' => $this->city,
             'address_detail' => $this->detail,
@@ -63,7 +126,7 @@ class User extends Component
 
         session()->flash('info', 'Product added successfully');
 
-        $this->name = '';
+        $this->nameaddress = '';
         $this->province = '';
         $this->city = '';
         $this->postal_code = '';
@@ -79,6 +142,8 @@ class User extends Component
         $this->defaultAddress->update();
         
     }
+
+    
 
     public function render()
     {

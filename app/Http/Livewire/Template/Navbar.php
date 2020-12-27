@@ -12,6 +12,17 @@ class Navbar extends Component
 {
     public $currentUser;
 
+    protected $listeners = [
+        'updateImageProfile' => 'updateImage'
+    ];
+
+    public function updateImage(){
+        if(Auth::user()){
+            $this->currentUser = UserModel::where('id', Auth::user()->id)->first();
+        }
+        $this->currentUser->update();
+    }
+
     public function render()
     {
         if(Auth::user()){
