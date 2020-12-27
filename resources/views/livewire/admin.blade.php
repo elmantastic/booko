@@ -4,7 +4,7 @@
     <div id="sidebar-wrapper">
         <div class="sidebar-header-booko">
             <div class="text-center mt-4">
-                <img src="{{asset('images/elmantastic.jpg')}}" height="100" alt="Porto Admin" class="rounded-circle"/>
+                <img src="{{ asset('/storage/images/users')}}/{{$currentUser->avatar}}?{{rand()}}" height="100" alt="Porto Admin" class="img-admin-profile"/>
             </div>
             <div class="sidebar-title text-center text-white mt-2 mb-3">
                 {{$currentUser->name}}

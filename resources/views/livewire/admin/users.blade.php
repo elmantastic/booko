@@ -1,4 +1,5 @@
 <div class="container-fluid">
+@include('livewire.admin.user.update')
   <div class="row mb-5">
     <div class="col">
       <div class="card border-0">
@@ -27,7 +28,7 @@
               <tr>
                 <td>{{$index + $users->firstItem()}}</td>
                 <td>{{$user->name}}</td>
-                <td class="text-center"><img src="{{ asset('/images')}}/{{$user->avatar}}" alt="product-image" class="img-fluid justify-content-center image-product-admin" width="30%"></td>
+                <td class="text-center w-25"><img src="{{ asset('/storage/images/users')}}/{{$user->avatar}}?{{rand()}}" alt="product-image" class="img-fluid justify-content-center image-product-admin" width="10%"></td>
                 <td>{{$user->email}}</td>
                 @if(empty($user->noHP))
                   <td>-</td>
@@ -44,7 +45,7 @@
                 @endif
                 <td>
                   <div class="form-group d-flex">
-                    <button class="border-0 btn-primary rounded-left p-3"><i class="fa fa-edit" ></i></button>
+                    <button wire:click="edit({{ $user->id }})" data-toggle="modal" data-target="#updateUserModal" class="border-0 btn-primary rounded-left p-3"><i class="fa fa-edit" ></i></button>
                     <button class="border-0 btn-secondary rounded-right p-3"><i class="fa fa-trash-alt"></i></button>
                   </div>
                 </td>

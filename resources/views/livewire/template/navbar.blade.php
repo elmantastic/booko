@@ -62,7 +62,7 @@
                     @else
                         <li class="nav-item dropdown form-inline">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <img height="40" src="{{ asset('/images')}}/{{$currentUser->avatar}}" alt="Admin name" />
+                            <img class="mr-2 img-user-profile" height="40" src="{{ asset('/storage/images/users')}}/{{$currentUser->avatar}}" alt="Admin name" />
                                 {{ Auth::user()->name }}
                             </a>
 
