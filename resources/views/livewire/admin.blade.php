@@ -23,9 +23,6 @@
             <li class="nav-item nav-li-booko" role="presentation">
                 <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="false"><i class="fas fa-chart-line mr-3"></i>Transactions</a>
             </li>
-            <li class="nav-item nav-li-booko" role="presentation">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-cog mr-3"></i>Manage</a>
-            </li>
         </ul>
     </div>
 

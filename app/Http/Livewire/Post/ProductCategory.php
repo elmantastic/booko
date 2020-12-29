@@ -33,9 +33,9 @@ class ProductCategory extends Component
     public function render()
     {
         if($this->search){
-            $products = ProductModel::where('category_id', $this->category->id)->where('title', 'like', '%'.$this->search.'%')->paginate(10);
+            $products = ProductModel::where('category_id', $this->category->id)->where('title', 'like', '%'.$this->search.'%')->where('is_active', 1)->paginate(10);
         } else{
-            $products = ProductModel::where('category_id', $this->category->id)->orderBy('created_at', 'DESC')->paginate(10);
+            $products = ProductModel::where('category_id', $this->category->id)->orderBy('created_at', 'DESC')->where('is_active', 1)->paginate(10);
         }
         $title = $this->category->name.' Books List';
         return view('livewire.post.product-category', compact('products','title'));

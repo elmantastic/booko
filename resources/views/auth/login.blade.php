@@ -7,7 +7,9 @@
             <div class="container ">
             <p class="h2 mb-4 text-left font-weight-bold">{{ __('Login') }}</p>
             <p class="text-left">Login first before you continue to main page</p>
-
+            @if (session('message'))
+                <div class="alert alert-danger">{{ session('message') }}</div>
+            @endif
             <form method="POST" action="{{ route('login') }}" style="padding: 0;">
                 @csrf
                 <label for="email" class="in text-white" style="color: #495057; margin-right: 100%;">Email</label>

@@ -92,22 +92,19 @@ class Users extends Component
     }
 
     public function delete(){
-        $userOrder = OrderModel::where('user_id', $this->deletedUserId)->count();
-        if($userOrder == 0){
-            UserModel::where('id', $this->deletedUserId)->delete();
-            session()->flash('message', 'Data Deleted Successfully.');
-        } else {
-            session()->flash('warning', 'Failed to delete the data. The user have an order records');
-        }
+        $deleteUser = UserModel::where('id', $this->deletedUserId)->first();
+        $deleteUser->is_active = 0;
+        $deleteUser->update();
+
         $this->dispatchBrowserEvent('deleteUserModal');
     }
 
     public function render()
     {
         if($this->search){
-            $users = UserModel::where('name', 'like', '%'.$this->search.'%')->paginate(10);
+            $users = UserModel::where('name', 'like', '%'.$this->search.'%')->where('is_active', 1)->paginate(10);
         } else{
-            $users = UserModel::orderBy('created_at', 'DESC')->paginate(10);
+            $users = UserModel::orderBy('created_at', 'DESC')->where('is_active', 1)->paginate(10);
         }
         
         $addresses = AddressModel::where('set_default', 1)->get();

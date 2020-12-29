@@ -28,7 +28,7 @@ class Product extends Component
             
     public function render()
     {
-        $products = ProductModel::orderBy('created_at', 'DESC')->get();
+        $products = ProductModel::orderBy('created_at', 'DESC')->where('is_active', 1)->get();
         return view('livewire.manage.product', [
             'products' => $products
         ]);

@@ -327,7 +327,7 @@
                         <div class="col-6">
                         <h6 class="font-weight-bold">Shipping Address</h6>
                         <p>{{$transaction->shipping_address}}</p>
-                        <p>{{$transaction->resi_code}}</p>
+                        <p>No Resi : {{$transaction->resi_code}}</p>
                         </div>
                         <div class="col-3">
                         <p>Status</p>
@@ -411,7 +411,7 @@
                         <div class="col-6">
                         <h6 class="font-weight-bold">Shipping Address</h6>
                         <p>{{$transaction->shipping_address}}</p>
-                        <p>{{$transaction->resi_code}}</p>
+                        <p>No Resi :{{$transaction->resi_code}}</p>
                         </div>
                         <div class="col-3">
                         <p>Status</p>

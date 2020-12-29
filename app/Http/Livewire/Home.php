@@ -19,7 +19,7 @@ class Home extends Component
         ->limit(4)
         ->get();
 
-        $products = ProductModel::orderBy('created_at', 'DESC')->take(10)->get();
+        $products = ProductModel::orderBy('created_at', 'DESC')->where('is_active', 1)->take(10)->get();
 
 
         return view('livewire.home', compact('popular_categories', 'products'));

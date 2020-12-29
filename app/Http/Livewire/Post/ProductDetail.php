@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product as ProductModel;
 use App\Models\Order as OrderModel;
 use App\Models\OrderDetail as DetailModel;
+use App\Providers\RouteServiceProvider;
 
 class ProductDetail extends Component
 {
@@ -87,6 +88,10 @@ class ProductDetail extends Component
 
     public function render()
     {
+        if($this->product->is_active == 0){
+            return view('productNotFound');
+        }
+
         return view('livewire.post.product-detail');
     }
 }

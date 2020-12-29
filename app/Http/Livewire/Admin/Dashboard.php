@@ -19,7 +19,7 @@ class Dashboard extends Component
     public function render()
     {
         $this->countUsers = UserModel::count();
-        $this->countProducts = ProductModel::count();
+        $this->countProducts = ProductModel::where('is_active', 1)->count();
         $this->countTransactions = TransactionModel::count();
         $this->countEarnings = DB::table('orders')
         ->where('status',1)

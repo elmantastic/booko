@@ -172,7 +172,9 @@ class Products extends Component
     }
 
     public function delete(){
-        ProductModel::where('id', $this->deletedProductId)->delete();
+        $deleteProduct = ProductModel::where('id', $this->deletedProductId)->first();
+        $deleteProduct->is_active = 0;
+        $deleteProduct->update();
 
         session()->flash('message', 'Data Deleted Successfully.');
         $this->dispatchBrowserEvent('deleteModal');
@@ -195,10 +197,11 @@ class Products extends Component
     public function render()
     {
         if($this->search){
-            $products = ProductModel::where('title', 'like', '%'.$this->search.'%')->paginate(10);
+            $products = ProductModel::where('title', 'like', '%'.$this->search.'%')->where('is_active', 1)->paginate(10);
         } else{
-            $products = ProductModel::orderBy('created_at', 'DESC')->paginate(10);
+            $products = ProductModel::orderBy('created_at', 'DESC')->where('is_active', 1)->paginate(10);
         }
+
         $this->categoryList = CategoryModel::orderBy('created_at', 'DESC')->get();
 
         return view('livewire.admin.products',compact('products'));

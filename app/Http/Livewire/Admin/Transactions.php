@@ -65,7 +65,7 @@ class Transactions extends Component
     public function render()
     {
         $this->countTransaction= DB::table('transactions')->count();
-        $this->transactionList= TransactionModel::orderBy('created_at')->get();
+        $this->transactionList= TransactionModel::orderBy('created_at', 'DESC')->get();
 
         foreach($this->transactionList as $list){
             $this->detailTransaction[$list->order->id] = DetailModel::where('order_id', $list->order->id)->get();

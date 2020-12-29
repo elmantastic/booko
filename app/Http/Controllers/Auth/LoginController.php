@@ -30,6 +30,13 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected function authenticated(Request $request, $user){
+        $message = 'Your account has been suspended. Please contact administrator.';
+
+        if($user->is_active == 0){
+            auth()->logout();
+            return redirect()->route('login')->withMessage($message);
+        }
+
         if($user->is_admin){
             // return redirect('admin');
             return redirect(RouteServiceProvider::ADMIN);
